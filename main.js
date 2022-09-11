@@ -14,7 +14,7 @@ const displayProducts = async(bookVolumeName) => {
   bookData.forEach(book => {
     console.log(book.volumeInfo);
 
-    const { title, imageLinks, authors, subtitle, publisher } = book.volumeInfo;
+    const { title, imageLinks, authors, subtitle, publisher, description } = book.volumeInfo;
     const { thumbnail } = imageLinks;
 
     const div = document.createElement('div');
@@ -35,18 +35,15 @@ const displayProducts = async(bookVolumeName) => {
 
             <h5 class="mt-4 font-bold">${title}</h5>
 
-            <p class="mt-2 text-sm text-gray-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
-              adipisci!
-            </p>
-            <div>
-              <a class="relative inline-block px-8 py-2 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+            <p class="mt-2 text-sm text-gray-500">${description.slice(0, 100) + '...'}</p>
+            <div class="mt-4">
+              <button onclick="addToCart()" class="relative inline-block px-8 py-2 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring rounded-sm">
               <span class="absolute inset-y-0 left-0 w-[2px] transition-all bg-indigo-600 group-hover:w-full group-active:bg-indigo-500"></span>
             
               <span class="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white">
-              Download
+              Add to Cart
             </span>
-            </a>
+            </button>
             </div>
           </div>
         </div>
@@ -56,6 +53,10 @@ const displayProducts = async(bookVolumeName) => {
   })
 }
 
-displayProducts('quilting')
+const addToCart = () => {
+  
+}
+
+displayProducts('programming')
 
 // loadBooks('quilting');
